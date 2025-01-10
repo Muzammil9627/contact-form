@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "Wnpk4WAEVNJhzmQ2U",
+      });
+   })();
+</script>
+<style>
+    .div{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(270deg , rgb(87, 84, 84) , rgb(34, 33, 33));
+        height: 400px;
+        width: 400px; 
+        margin-top: 200px;
+        margin-left: 800px;
+        border: 10px solid black;
+        color: wheat;
+
+        /* align-content: center; */
+    }
+</style>
+</head>
+<body>
+    <div class="div">
+        <h2>Email</h2>
+    <label>
+        Name <input type="text" id="username" placeholder="Enter Full Name">
+    </label>
+    <br>
+    <br>
+    <label>
+        Email <input type="text" id="useremail" placeholder="Enter Your Email">
+     </label>
+     <br>
+    <br>
+     <label>
+        Message <input type="text" id="usermessage" placeholder="Enter Your Message">
+     </label>
+     <br>
+    <br>
+     <button onclick="submit()">Click</button>
+    </div>
+     <script>
+       function submit(){
+        let username = document.getElementById("username").value;
+        let useremail = document.getElementById("useremail").value;
+        let usermessage = document.getElementById("usermessage").value;
+        let params = {
+            Name : username,
+            Email : useremail,
+            message : usermessage
+        }
+        emailjs.send("service_sk8xruj", "template_pe2mnbn", params).then((res) => {
+                alert("Query Sent");
+                console.log(res)
+            })
+            .catch((error) => {console.log(error)})
+       }
+     </script>
+</body>
+</html>
